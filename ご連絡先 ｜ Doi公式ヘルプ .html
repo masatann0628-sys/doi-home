@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <meta charset=utf-8>
+<meta http-equiv=Content-Style-Type content=text/css>
+<meta http-equiv=Content-Script-Type content=text/javascript>
+<title>ご連絡先 | Doi公式ヘルプ</title>
+<meta property=og:locale content=ja_JP>
+<meta property=og:type content=article>
+<meta property=og:site_name content=Doi公式ヘルプ>
+<meta property=og:title content="ご連絡先 | Doi公式ヘルプ">
+<style>--------------------------------------
+　リセット
+--------------------------------------- */
+ 
+*{margin:0px;padding:0px}a{overflow:hidden}img{border:none;vertical-align:op}li{list-style-type:none}br.clear{clear:both}.clearfix{zoom:1}.clearfix:after{content:"";display:block;clear:both}html{color:#666}body{width:100%;text-align:center;font-size:14px;font-family:"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック",sans-serif,"Osaka‐等幅";line-height:1.6em;background-color:#eaeaea}a{color:#498b9d;text-decoration:underline}a:link{color:#498b9d;text-decoration:underline}a:visited{color:#498b9d;text-decoration:underline}a:hover{color:#a22285;text-decoration:none}a:active{color:#a22285;text-decoration:none}h1 a,h1 a:link,h1 a:visited{color:#fff;text-decoration:none}h1 a:hover,h1 a:active{color:#999999;text-decoration:none}#linkmenu_inner li a,#linkmenu_inner li a:link,#linkmenu_inner li a:visited{color:#fff;font-size:14px;text-decoration:none}#linkmenu_inner li a:hover,#linkmenu_inner li a:active{color:#7a6f75}.entryHeader a,.entryHeader a:link,.entryHeader a:visited{color:#7a6f75;text-decoration:none}.entryHeader a:hover,.entryHeader a:active{color:#6cabbc;text-decoration:none}.entryState a,.entryState a:link,.entryState a:visited{color:#999;text-decoration:none}.entryState a:hover,.entryState a:active{color:#6cabbc}.cell{width:27px}#wrapper{width:100%;margin:0 auto;padding:0;text-align:center}#header{width:100%;margin:0;padding:30px 0;background:#7a6f75;text-align:center}#header_inner{width:960px;margin:0 auto;text-align:left}h1{margin:0 auto 10px;font-size:20px;color:#fff;line-height:1.4}#header #description{width:740px;float:left;margin:0 auto;padding:0;color:#fff;line-height:1.4}#search_box{width:200px;float:right}.search{padding:2px 2px 2px 24px;padding-top:4px9;color:#aaa;border:solid 1px #ccc;border-right:none;width:130px;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NTQ5QjkxRDlBOERFMTFFMjkyQzRFREFDNzNEQ0E1MDEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NTQ5QjkxREFBOERFMTFFMjkyQzRFREFDNzNEQ0E1MDEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo1NDlCOTFEN0E4REUxMUUyOTJDNEVEQUM3M0RDQTUwMSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo1NDlCOTFEOEE4REUxMUUyOTJDNEVEQUM3M0RDQTUwMSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PuZEihoAAAD0SURBVHjajNJBSwJRFIbhO47owizQsmgj0cIWLgqRVrbzf7sSF4ngJiJIS8GVVoqaoOV74GscRkMPPIzeOZ937hk9t6kMCsjBxyde0HOR8nTN4gFn+v6re3M0FA7KfvEIVZziGY+6TnCBK3xo5yB0qxst1PGlwABDXCONLlYWiiGvpie3XXaeN50z/bdooQSmWLjdNVKfHw4tdK7kPyEb0o8EoY5CxR2BvPSigxjjUsM40WFTuME94phpEMvwe7IXW8F5ZKdvPbb1vaNma16oIa7djtU002PZyMta66Ppuf1lPXco6fOr7w6rgYZmf6v2WoABAFDfMzPPA/1dAAAAAElFTkSuQmCC)no-repeat #fff 6px 4px}.search_btn{padding:2px;color:#333;cursor:pointer}#linkmenu{margin:0 auto 40px;text-align:center;background:#6cabbc;border-bottom:1px solid #ddd}#linkmenu_inner{width:960px;margin:0 auto;text-align:left}#linkmenu_inner li{margin:0 auto;padding:5px 20px 5px 0;text-align:left;float:left}.MENU{visibility:hidden;z-index:999;position:absolute;width:240px;margin-top:5px;padding:15px;background:#fff;border:1px solid #ddd;text-align:left}.MENU li{margin:0 0 10px 15px;list-style-type:circle}#MENU3{width:200px}#MENU3 table{margin:0 auto}#content{width:960px;margin:0 auto;padding:0}#main{width:100%;padding:0;text-align:left;margin-bottom:30px}#entryNavi{margin:0 0 10px 0}.entry{margin:0 0 40px 0;background:#fff;padding:0;border:1px solid #aaa}.entryHeader{padding:25px 20px;font-size:24px;border-bottom:1px solid #aaa;line-height:1.4}h2{font-weight:bold}.entryBody{padding:5px 20px 0}.entryText{margin:15px 0 0 0}.entryMore{margin:0}.entryFooter{padding:15px 20px;border-top:1px solid #aaa}.entryState{color:#999}.entryState li{float:left;border-left:1px solid #ddd;padding:0 10px}#relatedEntry{border:1px solid #aaa;padding:20px;margin:20px 0;background:#fff}#relatedEntry ul{margin-left:10px}#relatedEntry li{margin:0 0 5px 15px;list-style-type:circle}#relateTitle{margin:0 0 10px 0;font-size:14px;font-weight:bolder}.pageTop{margin:0;text-align:right;padding:10px;border:1px solid #aaa;background:#fff;width:120px;float:right}.pageTop a,.pageTop a:link,.pageTop a:visited{color:#565656;text-decoration:none}.pageTop a:hover,.pageTop a:active{color:#498b9d}#footer{width:100%;padding:20px 0;background:#ccc;text-align:center;border-top:1px solid #aaa}#footer_inner{width:960px;margin:0 auto;text-align:left}.footer_box{width:290px;float:left;margin-right:45px}#footer_inner .right{margin-right:0}#footer h3{width:100%;font-size:16px;font-weight:bold;padding:10px 0;border-bottom:1px solid #aaa;margin-bottom:10px}.footer_contents{margin-bottom:40px;margin-left:10px}.footer_contents li{margin-bottom:5px}#copyright{margin:0 auto;font-size:12px;padding:10px 0;text-align:center;background:#7a6f75;color:#fff}#copyright_inner{width:960px;margin:0 auto;text-align:left}.copyright_text{width:75%;float:left}.copyright_bnr{float:right}#copyright a,#copyright a:link,#copyright a:visited{color:#7dc7dc}#copyright a:hover,#copyright a:active{{color:#a22285;text-decoration:none}}</style>
+<link rel=alternate type=application/rss+xml title=RSS href="http://info.neutralx0.com/?mode=rss">
+<link rel=alternate type=application/atom+xml href="http://info.neutralx0.com/?mode=atom">
+<link rel=alternate media=handheld type=application/xhtml+xml href="http://info.neutralx0.com/?eid=1">
+<style data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget">.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,"hiragino kaku gothic pro",meiryo,"ms pgothic",sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{0%{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}@keyframes rotateSpinner{0%{transform:rotate(0)}to{transform:rotate(360deg)}}</style><meta name=referrer content=no-referrer><link rel="shortcut icon" href="data:image/gif;base64,R0lGODlhIAAgAPcAAAB/vmW12cDh7zmgzkin0gB+vQCBvwCDvwCDwAB/vQCCv5TL5QB9vMHh8P3+/wB9vWa12QGEwP7//8vm8i6ay6HS6J3Q57bc7fj8/YnG4ur1+rPa7ODw9wGAvgCBvuTy+AuJw9rt9m652+bz+eLx+DGczA+LxAqJwofF4fP5/I/J4ymYylmv1hSOxY3I4zadzU2p0wKEwCSVyWy42zqgzsTi8FOr1DqfzgmIwgeHwvz+/s3n8+Py+B+TyAyGwaLS6EWl0d/w9yeXypPL5CCSxzOdzRiQxvb7/a/Z6/L5/A2Kw2Oy2CSTyJ3P53/B32Kz2AKEwQaHwhGMxAmJw16x11Cr1COVybjd7b/h77/g7yqYyhOKw/r9/pbM5R2SxwuJwszm8tXr9RePxpjN5l+x13m/3rjd7srl8sXj8Wq32rDZ7AKBv9zu9tjs9qrW6qvX6nO73BmQxkam0u32+5LK5EGj0FGr1B6Sx9Hp9HzA3yuZywaHwZnO5les1Gm32n3A397v9y+bzK/Z7Ge22eXz+fT6/E6q08Tj8YPD4PX6/WS02fv9/gGBvpjO5hGKw3a93RqRxjafzpXM5SKUyITE4dfs9TmfzhCMxAOCv3S83Z7Q5wWGwR6RxwCAvgCEwP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAgACAAAAj/AD0JHEiwoMGDBT8pXMiwIUMSC9I8usKloUCHGBvyMeLpAIIIQAAxvJgxYwZPBhJEiVHA06QPC0mWbBhmjwdOgkhUmtHJ0xOYn2TOXEgJAYIaDG0UaNFFodChn+x00tMQSUsRTj1BZUgAAI2GDXoGyLp1YdcBDQWIJVv209m0a4NqbfuWoVpPY+W2dQsArd24T4fWXXg3b+CZgxUWZls28afFehly+KFCUxCHjiHL1PHnREdPIOgsXCTJRF+4eBlT8dSJ0ZQ1Hjyh+DQhkMDTf1NHvsD6BRoNWJh0OqEIxEDchAHPZaFACo+FeHwYKAjgBtieENhSKGCo4ZsOCggy0+jT8EICT1gjF0kgx2EjTA8UHEiQwEzDMQxyOGEL4cAXDg4dUsclSpSghkNkFABJBWw14EkBS2Q0hwYOOJQIEQZUEQJjMHgCwBB7NdGSBTHN9ckIXhwAQBkSbLWDIwrIkEKJDIEhBgIMWJLFTA5UsEVPG4xkokIhUOBhB5FY0EYhn0hwBCFnZCBEAeEtYNGQCmGAiAkePgBFHFqscAcOBjzQUw9BXpnRCHlYEQECBnTSiQEHeLJJCS4kgdFhC2EwwQKZDOIHHCi4wUaFGSGk6KIGBQQAOw=="><style>.sf-hidden{display:none!important}</style><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:; form-action 'none'; base-uri 'none';"></head>
+<body>
+<div id=wrapper>
+<a id=top name=top></a>
+<div id=header>
+ <div id=header_inner>
+ 
+ <h1>⚙️<a href=./doi-game.html>Doi公式ヘルプ</a></h1>
+ <div id=header_contents class=clearfix>
+ <p id=description>ご連絡前にご一読ください(ﾟωﾟ)</p>
+ 
+ 
+ </div>
+ 
+ </div>
+</div>
+ 
+ 
+ 
+ <div id=MENU1 class=MENU>
+</ul>
+ </div>
+ </div>
+ 
+ 
+ <div id=MENU2 class=MENU>
+ <div class=list_text></li>
+<li><a href="http://info.neutralx0.com/?eid=23">https://neutralx0.net のアクセス再開について</a> (08/29)</li>
+<li><a href="http://info.neutralx0.com/?eid=21">ChromeでWebGLゲームの動作が極端に遅い（重い）場合</a> (03/19)</li>
+<li><a href="http://info.neutralx0.com/?eid=20">2025.1.28以降、Popタイピングのセーブデータが白紙になった</a> (01/28)</li>
+<li><a href="http://info.neutralx0.com/?eid=19">ゲームの設定やセーブデータが保存されない、消えてしまう</a> (04/06)</li>
+</ul>
+ </div>
+ </div>
+ 
+ 
+ <div id=MENU3 class=MENU>
+ <table border=0 cellpadding=0 cellspacing=1>
+ <tbody><tr align=center>
+ <td class=cell style=color:#CC0000>S</td>
+ <td class=cell style=color:#666666>M</td>
+ <td class=cell style=color:#666666>T</td>
+ <td class=cell style=color:#666666>W</td>
+ <td class=cell style=color:#666666>T</td>
+ <td class=cell style=color:#666666>F</td>
+ <td class=cell style=color:#0066CC>S</td>
+ </tr>
+ </table>
+ <table border=0 cellspacing=1 cellpadding=0>
+<tbody><tr style=text-align:center><td class=cell>&nbsp;<td class=cell>&nbsp;<td class=cell>&nbsp;<td class=cell>&nbsp;<td class=cell>&nbsp;<td class=cell>&nbsp;<td class=cell>1</tr>
+<tr style=text-align:center><td class=cell>2<td class=cell>3<td class=cell>4<td class=cell>5<td class=cell>6<td class=cell>7<td class=cell>8</tr>
+<tr style=text-align:center><td class=cell>9<td class=cell>10<td class=cell>11<td class=cell>12<td class=cell>13<td class=cell>14<td class=cell>15</tr>
+<tr style=text-align:center><td class=cell>16<td class=cell>17<td class=cell>18<td class=cell>19<td class=cell>20<td class=cell>21<td class=cell>22</tr>
+<tr style=text-align:center><td class=cell>23<td class=cell>24<td class=cell>25<td class=cell>26<td class=cell>27<td class=cell>28<td class=cell>29</tr>
+<tr style=text-align:center><td class=cell>30<td class=cell>31<td class=cell>&nbsp;<td class=cell>&nbsp;<td class=cell>&nbsp;<td class=cell>&nbsp;<td class=cell>&nbsp;</tr>
+<tr><td colspan=7><div style=text-align:center class=calendar_month><a href="http://info.neutralx0.com/?month=202607">&lt;&lt;</a> August 2026 <a href="http://info.neutralx0.com/?month=202609">&gt;&gt;</a></div></table>
+ </div>
+ 
+<div id=content>
+ 
+ <div id=main>
+ 
+
+ 
+ 
+ <div class=entry>
+ <h2 class=entryHeader><a href="">ご連絡先</a></h2>
+ <div class=entryBody>
+ <p class=entryState></p>
+</div>
+<div>
+</div>
+<p>※基本的にメールへの返信はいたしませんが、不具合の検証やご質問への回答など個別の対応が必要な際には
+ <br>
+ ご連絡させていただくことがございます。何卒ご了承ください。
+</p>
+<div>
+</div>
+<p>※広告掲載等の営業メールはご遠慮くださいますようお願いいたします。
+</p>
+<p>&nbsp;</p>
+<p>---------------------------------------------------------------------------------
+</p>
+<p>サイト管理人：Koro
+</p>
+<p>ご連絡先　　：masatann0628@gmail.com
+</p>
+<p>---------------------------------------------------------------------------------
+</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+ <div id=fb-root class=fb_reset><div style=position:absolute;top:-10000px;width:0px;height:0px><div></div></div></div>
+ <script></script>
+ <style class=sf-hidden></style></div></div>
+ <a name=sequel></a>
+ <div class=entryMore></div>
+ 
+ 
+ </div>
+ <div class=entryFooter>
+ <ul class="entryState clearfix"> </ul>
+ </div>
+ </div>
+ 
+ 
+ 
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ <div class="pageTop clearfix">
+ <a href=#top>▲このページの先頭へ</a>
+ </div>
+ <br class=clear>
+ </div>
+ 
+</div>
+<div id=footer>
+ <div id=footer_inner class=clearfix>
+ <div class="footer_box left">
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ </div>
+ </div>
+</div>
+<div id=copyright>
+ <div id=copyright_inner class=clearfix>
+ <p class=copyright_text>
+ (C) 2026 <a  title=JUGEMブログのサイトはこちら>ブログ JUGEM</a> Some Rights Reserved.
+ </p>
+ 
+ <div class=copyright_bnr>
+ <a  target=_blank><img src="data:image/gif;base64,R0lGODlhgAAWAMQAAG+63P///y+bzAmx/uLx+ASW2e/4+5fN5sXj8Umn0giq9afV6bfc7dfs9QCEwIbF4QKPzwyKwwai6luw1h6Sxz6i0BWOxQSb4AGHxACGwwGJxwaHwczMzPj8/gCFwQOFwiH5BAAAAAAALAAAAACAABYAAAX/ICeOZGmeaKqubOu+6SDPdG3feK7vfO//NhFwSCwajz8hcnlUaDAFBQSjUcykVKtMMsVgIJeZpAApm8vRArVgK2g0YZmSSf8pMJXEJ2OZUDJaHn1/Ck58FQB+GR4Xag4CkJGQexkJehA0GhEJAhlsA3N1ojoQAgEBBw4NAR0WbBIZq60QHhQLp7gNFRgZAAa4wAEEFgCnCxkSMhcZDKcJGHIco9M5GhOnCA6/AQIQEhce250C28EBCarmwAIHuAJwyxW4AB7R1Pc11tjap51e/Nw+rBIGABGBUw0cHAzAAIDDh+jaGXNA0QGCefVASRsQjCMwjiADeMQ18lRJkR9l/6QUqVKHvgDZxFUEKCDBqQ4UKlpYlW1hhZkzJfajKA+jPZAtWYZcqrRl0hpKWUZFSvXGy5hDK4qTmGpmHwsKTzE4QJbsgw0OhKKi2MyoRpUfp6IMGbcuyaknn9JQcCHOAAzXYNKcKe5WgAkUJyBYzADdQnUA0gLDWdStEAcBHAzQjJlz5s+dM2/eLFpk59GnT5sGqXk1ZwwOPDgoEDswVm6E+xmO7KDD5LDqCAiQHGDbgbbbIm8W0Rp13tCt45JGaVc0ZpKeOW/2MMEAgggVbQP8SXGDuwenuj7wjSuCT6AVuf5i32C37Lfa8zvXz3+///4AKuCAYQyg5QB6DKUTwP8DFdl0igUOdkCeA4EF4N4pEwIl0QPF4JLAbpwx99+IAJJoYomJ5fJAWwsSF8ACDxywTUIW3QQjixYuREBZZT0QwYYbDJSNfZpdduKRKCL5XwYIBmNAThY8NtlPGVAgZTARDKROAABs6EAFHXQggAcgLsdBkmgqmSZ/GCTAogELDCdgBA+U0wEDcjrAh4y4LHBLNgloGYxw13SQQAYObPBBYh0YsEuR0qyp5qRoIvqBAODBJuBmiG6AqQOacgYBRZCA6kBOGugJX0WyWbBBqLTR5ipsZkpqK6UnSuDAqLTtd8GuDvy6n4C8OqBrr8Em++uvuuo66n7OamfkrdTiWu0XtdbuJyK23Gbb7bcjwiDuuOSWa+64IQAAOw==" alt="無料ブログ作成サービス JUGEM" width=128 height=22 border=0></a>
+ </div>
+ 
+ </div>
+</div>
+</div>
