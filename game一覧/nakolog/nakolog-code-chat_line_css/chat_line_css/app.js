@@ -121,7 +121,7 @@
     if (sb && currentUser) {
       try {
         await upsertProfile(displayName);
-        connectionStatus.textContent = "";
+        connectionStatus.textContent = "database接続済み";
       } catch (e) {
         connectionStatus.textContent = "一部機能の設定が必要です";
         console.error("プロフィール保存エラー", e);
@@ -143,7 +143,7 @@
     e.preventDefault();
     const name = registerName.value.trim();
     if (!name) { setStatus(registerStatus, "名前を入力してください。"); return; }
-    if (!sb) { setStatus(registerStatus, "未設定です。config.jsのURLとキーを確認してください。"); return; }
+    if (!sb) { setStatus(registerStatus, "database未設定です。config.jsのURLとキーを確認してください。"); return; }
     registerButton.disabled = true;
     setStatus(registerStatus, "登録しています…");
     try {
@@ -195,14 +195,7 @@
   function addAIStamp(number, role = "user", save = true, createdAt = nowISO()) {
     const row = document.createElement("div"); row.className = role === "user" ? "line__right" : "line__left stamp-row";
     if (role !== "user") { const fig=document.createElement("figure"), im=document.createElement("img"); im.src="icon.png"; im.alt="うさきち"; fig.append(im); row.append(fig); }
-    const wrap=document.createElement("div");
-wrap.className="stamp";
-const img=document.createElement("img");
-img.src=`https://masatann0628-sys.github.io/doi-home/stamp/${number}.png`;
-img.alt=`スタンプ ${number}`;
-img.loading="lazy";
-wrap.append(img);
-row.append(wrap);
+    const wrap=document.createElement("div"); wrap.className="stamp"; const img=document.createElement("img"); img.src=`https://masatann0628-sys.github.io/doi-home/stamp/${number}.png`; img.alt=`スタンプ ${number}`; img.loading="lazy"; wrap.append(img); row.append(wrap);
     if (role === "user") { const date=document.createElement("span"); date.className="date"; date.textContent="送信 "+timeNow(createdAt); row.append(date); }
     aiMessages.append(row); scrollBottom(aiMessages);
     if (save) { history.push({role,stamp:number,created_at:createdAt}); persistLocal(); saveRemoteAI({role,content:`[スタンプ:${number}]`}); }
@@ -426,7 +419,7 @@ row.append(wrap);
       const name=document.createElement("strong");name.textContent=m.user_id===currentUser.id?"あなた":(names.get(m.user_id)||"nakologユーザー");
       let body=document.createElement("p");
       const stampMatch=/^\[スタンプ:(\d+)\]$/.exec(m.content||"");
-      if(stampMatch){const img=document.createElement("img");img.className="dm-stamp global-stamp";img.src=`stamp/${Number(stampMatch[1])}.png`;img.alt="スタンプ";body=img;} else {body.className="global-message-body";renderMessageContent(body,m.content,"chat-image");}
+      if(stampMatch){const img=document.createElement("img");img.className="dm-stamp global-stamp";img.src=`https://masatann0628-sys.github.io/doi-home/stamp/${Number(stampMatch[1])}.png`;img.alt="スタンプ";body=img;} else {body.className="global-message-body";renderMessageContent(body,m.content,"chat-image");}
       const time=document.createElement("small");time.textContent=timeNow(m.created_at);
       row.append(avatar,name,body,time);el.append(row);
     });
@@ -481,7 +474,7 @@ row.append(wrap);
       peopleResults.replaceChildren();
       if (!uniquePeople.length) { const empty=document.createElement("div"); empty.className="empty-note"; empty.textContent="見つかりませんでした。相手が名前登録を済ませているか確認してください。"; peopleResults.append(empty); }
       else uniquePeople.slice(0,12).forEach(p=>peopleResults.append(renderPersonButton(p)));
-    } catch(e) { peopleResults.replaceChildren(); const msg=document.createElement("div"); msg.className="error-note"; msg.textContent="検索できませんでした："+e.message+"（database/schema.sql のSQLを実行してください）"; peopleResults.append(msg); }
+    } catch(e) { peopleResults.replaceChildren(); const msg=document.createElement("div"); msg.className="error-note"; msg.textContent="検索できませんでした："+e.message+"（databaseの設定・テーブルを確認してください）"; peopleResults.append(msg); }
     finally { searchBusy=false; }
   }
   $("#searchPeopleForm").addEventListener("submit", e=>{e.preventDefault();searchPeople($("#peopleSearchInput").value);});
@@ -545,7 +538,7 @@ row.append(wrap);
     directHistory.forEach(m=>{
       const mine=m.sender_id===currentUser.id; const row=document.createElement("div"); row.className="dm-row "+(mine?"mine":"theirs"); row.dataset.messageId=String(m.id);
       const avatar=document.createElement("img");avatar.className="mini-avatar dm-avatar";avatar.alt="";avatar.src=mine?(localStorage.getItem("nakolog-profile-icon-"+currentUser.id)||"icon.png"):"icon.png";row.append(avatar);
-      if (m.stamp_no) { const img=document.createElement("img"); img.className="dm-stamp"; img.src=`stamp/${m.stamp_no}.png`; img.alt="スタンプ"; row.append(img); }
+      if (m.stamp_no) { const img=document.createElement("img"); img.className="dm-stamp"; img.src=`https://masatann0628-sys.github.io/doi-home/stamp/${m.stamp_no}.png`; img.alt="スタンプ"; row.append(img); }
       else { const bubble=document.createElement("div"); bubble.className="dm-bubble"; renderMessageContent(bubble,m.content||"","chat-image"); row.append(bubble); }
       const meta=document.createElement("span"); meta.className="dm-meta";
       const time=document.createElement("small"); time.className="dm-time"; time.textContent=timeNow(m.created_at); meta.append(time);
@@ -656,7 +649,7 @@ row.append(wrap);
   }
   for(let i=1;i<=41;i++) {
     const b=document.createElement("button"); b.type="button"; b.className="stamp-choice"; b.setAttribute("aria-label",`スタンプ ${i}`); b.title=`スタンプ ${i}`;
-    const im=document.createElement("img"); im.src=`stamp/${i}.png`; im.alt=`スタンプ ${i}`; im.loading="lazy"; b.append(im);
+    const im=document.createElement("img"); im.src=`https://masatann0628-sys.github.io/doi-home/stamp/${i}.png`; im.alt=`スタンプ ${i}`; im.loading="lazy"; b.append(im);
     b.addEventListener("click",()=>sendStamp(i)); stampGrid.append(b);
   }
   $("#aiStampBtn").addEventListener("click",()=>{ $("#stampTarget").value="ai"; setView("stampsView"); });
@@ -687,10 +680,10 @@ row.append(wrap);
       $("#homeUserName").textContent=displayName;setStatus($("#settingsStatus"),"名前を保存しました。");
     } catch(e){setStatus($("#settingsStatus"),"保存できませんでした："+e.message);}
   });
-  $("#clearHistoryBtn").addEventListener("click",()=>{if(confirm("この端末のAI会話履歴を消去しますか？")){history=[];persistLocal();renderAIHistory();$("#settingsDialog").close();}});
+  $("#clearHistoryBtn").addEventListener("click",()=>{if(confirm("この端末のAI会話履歴を消去しますか？（databaseのクラウド履歴は残ります）")){history=[];persistLocal();renderAIHistory();$("#settingsDialog").close();}});
 
   async function init() {
-    if (!sb) { setStatus(registerStatus,"未設定です。config.jsのURLとキーを確認してください。"); return; }
+    if (!sb) { setStatus(registerStatus,"database未設定です。config.jsのURLとキーを確認してください。"); return; }
     connectionStatus.textContent="databaseに接続中…";
     try {
       const {data,error}=await sb.auth.getSession(); if(error)throw error;
