@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#06c755">
+<title>nakolog</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body>
+<section id="registerScreen" class="register-screen">
+  <div class="register-card">
+    <img src="icon.png" alt="nakolog" class="register-icon">
+    <div class="brand-word">nakolog</div>
+    <h1>名前を登録しよう</h1>
+    <p>メールアドレスなしで始められます。</p>
+    <form id="registerForm">
+      <label for="registerName">表示名</label>
+      <input id="registerName" type="text" maxlength="30" autocomplete="nickname" placeholder="名前を入力" required>
+      <button id="registerButton" class="primary-btn" type="submit">この名前で始める</button>
+    </form>
+    <p id="registerStatus" class="status-text" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
+<div id="appShell" class="app-shell hidden">
+  <header class="app-header">
+    <img src="icon.png" alt="" class="header-avatar">
+    <div class="header-title"><strong id="headerTitle">ホーム</strong><small id="connectionStatus">接続中…</small></div>
+    <button id="settingsBtn" class="header-icon" aria-label="設定" title="設定">⚙</button>
+  </header>
+
+  <main class="app-main">
+    <section id="homeView" class="app-view active-view">
+      <div class="home-hero">
+        <div class="hero-copy"><span class="eyebrow">WELCOME TO NAKOLOG</span><h1>こんにちは、<span id="homeUserName">ゲスト</span>さん！</h1><p>今日は何を話そう？</p></div>
+        <img src="icon.png" alt="nakologキャラクター" class="hero-avatar">
+      </div>
+      <div class="home-section-title">メニュー</div>
+      <div class="home-menu-grid">
+        <button class="home-menu-card ai-card" data-go="aiView"><span class="menu-emoji">🤖</span><span><strong>AIと話す</strong><small>AIに質問してみよう</small></span><b>›</b></button>
+        <button class="home-menu-card talk-card" data-go="talkView"><span class="menu-emoji">💬</span><span><strong>トーク</strong><small>友だちとメッセージ</small></span><b>›</b></button>
+        <button class="home-menu-card stamp-card" data-go="stampsView"><span class="menu-emoji">😊</span><span><strong>スタンプ</strong><small>41種類のスタンプ</small></span><b>›</b></button>
+      </div>
+      <div class="home-section-title">最近のトーク</div>
+      <div id="homeRecent" class="recent-list"><div class="empty-note">トークはまだありません。</div></div>
+      <div class="home-footer-note">nakolog · あなたの会話スペース</div>
+    </section>
+
+    <section id="aiView" class="app-view chat-view">
+      <div class="view-heading"><div><h2>AIチャット</h2><p>うさきちAIとお話ししよう 🐰</p></div><span class="online-dot">● オンライン</span></div>
+      <div id="aiMessages" class="line__contents scroll" aria-live="polite" aria-label="AIとの会話"></div>
+      <div class="voice-status" id="voiceStatus" aria-live="polite"></div>
+      <form id="aiChatForm" class="composer">
+        <button type="button" id="aiStampBtn" class="tool-btn" title="スタンプ">😊</button>
+         <button type="button" class="tool-btn image-pick-btn" data-image-target="ai" title="画像を送る">🖼️</button>
+         <input type="file" id="aiImageInput" class="hidden" accept="image/*">
+        <textarea id="aiMessageInput" rows="1" placeholder="メッセージを入力" aria-label="AIへのメッセージ"></textarea>
+        <button type="button" id="micBtn" class="tool-btn" title="音声入力">🎙️</button>
+        <button type="submit" id="aiSendBtn" class="send-btn">送信</button>
+      </form>
+      <div class="composer-note">送信するとAIが返事します。マイクは対応ブラウザで使えます。</div>
+    </section>
+
+    <section id="talkView" class="app-view talk-view">
+      <div class="view-heading"><div><h2>トーク</h2><p>名前で相手を探してメッセージしよう</p></div></div>
+      <section id="talkHomePanel" class="talk-home-panel">
+        <button type="button" id="globalTabBtn" class="talk-menu-row"><span class="talk-menu-icon">🌐</span><span><strong>みんなのトーク</strong><small>登録ユーザー全員で会話</small></span><b>›</b></button>
+        <button type="button" id="peopleTabBtn" class="talk-menu-row"><span class="talk-menu-icon">👤</span><span><strong>個人トーク</strong><small>申請・承認と1対1の会話</small></span><b>›</b></button>
+      </section>
+      <section id="globalChatPanel" class="global-chat-panel hidden">
+        <div class="subpage-head"><button type="button" id="backGlobalBtn" class="back-btn">‹ 戻る</button><strong>みんなのトーク</strong></div>
+        <div id="globalMessages" class="global-messages" aria-live="polite"></div>
+        <form id="globalChatForm" class="composer"><button type="button" id="globalStampBtn" class="tool-btn" title="スタンプ">😊</button><button type="button" class="tool-btn image-pick-btn" data-image-target="global" title="画像を送る">🖼️</button><input type="file" id="globalImageInput" class="hidden" accept="image/*"><textarea id="globalMessageInput" rows="1" maxlength="12000" placeholder="みんなにメッセージ" aria-label="みんなのトーク"></textarea><button type="submit" class="send-btn" id="globalSendBtn">送信</button></form>
+        <p id="globalStatus" class="direct-status" role="status"></p>
+      </section>
+      <section id="peoplePanel" class="people-panel hidden">
+        <div class="subpage-head"><button type="button" id="backPeopleBtn" class="back-btn">‹ 戻る</button><strong>個人トーク</strong></div>
+        <div class="subheading">申請・トーク</div><div id="requestList" class="recent-list"><div class="empty-note">申請はありません。</div></div>
+        <form id="searchPeopleForm" class="people-search"><input id="peopleSearchInput" type="search" maxlength="30" placeholder="名前で検索" aria-label="名前で検索"><button type="submit">検索</button></form>
+        <div id="peopleResults" class="people-results" aria-live="polite"></div>
+        <div id="talkListPanel"><div class="subheading">トーク一覧</div><div id="talkList" class="recent-list"><div class="empty-note">まだトークはありません。上で名前を検索してください。</div></div></div>
+      </section>
+      <section id="directChatPanel" class="direct-chat-panel hidden">
+        <div class="direct-chat-head"><button type="button" id="backTalkListBtn" class="back-btn">‹ 戻る</button><img src="icon.png" alt="" class="mini-avatar"><strong id="directPeerName">相手</strong><span id="directPeerStatus">トーク</span></div>
+        <div id="directMessages" class="direct-messages" aria-live="polite"></div>
+        <div id="directStatus" class="direct-status" role="status"></div>
+        <form id="directChatForm" class="composer">
+          <button type="button" id="directStampBtn" class="tool-btn" title="スタンプ">😊</button>
+           <button type="button" class="tool-btn image-pick-btn" data-image-target="direct" title="画像を送る">🖼️</button>
+           <input type="file" id="directImageInput" class="hidden" accept="image/*">
+          <textarea id="directMessageInput" rows="1" placeholder="メッセージを入力" aria-label="トークメッセージ"></textarea>
+          <button type="submit" id="directSendBtn" class="send-btn">送信</button>
+        </form>
+      </section>
+    </section>
+
+    <section id="stampsView" class="app-view stamps-view">
+      <div class="view-heading"><div><h2>スタンプ</h2><p>好きなスタンプをタップして送ろう</p></div></div>
+      <div class="stamp-target-wrap"><label for="stampTarget">送信先</label><select id="stampTarget"><option value="ai">うさきち AI</option><option value="global">みんなのトーク</option><option value="talk">個人トーク</option></select></div>
+      <div id="stampGrid" class="stamp-grid full-stamp-grid"></div>
+      <p id="stampStatus" class="status-text" role="status" aria-live="polite">スタンプを選ぶと送信します。</p>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="メインメニュー">
+    <button class="nav-item active" data-view="homeView" aria-current="page"><span>⌂</span><small>ホーム</small></button>
+    <button class="nav-item" data-view="aiView"><span>🤖</span><small>AI</small></button>
+    <button class="nav-item" data-view="talkView"><span>▤</span><small>トーク</small><i id="talkBadge" class="nav-badge hidden">•</i></button>
+    <button class="nav-item" data-view="stampsView"><span>☺</span><small>スタンプ</small></button>
+  </nav>
+</div>
+
+<dialog id="settingsDialog">
+  <form method="dialog" class="settings-form">
+    <h2>設定</h2>
+    <label>表示名<input id="settingsName" maxlength="30" placeholder="表示名"></label>
+    <label>ホームのアイコンを変更 <input type="file" id="profileIconInput" accept="image/*"></label>
+    <p class="settings-footnote">画像を選ぶと「こんにちは、○○さん！」のアイコンに反映されます。</p>
+    <button type="button" id="saveNameBtn" class="primary-btn">名前を保存</button>
+    <p id="settingsStatus" class="status-text" aria-live="polite"></p>
+    <label class="check-label"><input id="autoSpeak" type="checkbox"> AIの返事を自動で読み上げる</label>
+    <div class="settings-actions"><button value="cancel" class="secondary-btn">閉じる</button><button type="button" id="clearHistoryBtn" class="danger-btn">この端末のAI履歴を消去</button></div>
+    <p class="settings-footnote">メールアドレスは不要です。匿名アカウントはブラウザのデータを消すと復元できない場合があります。</p>
+  </form>
+</dialog>
+</body>
+</html>
