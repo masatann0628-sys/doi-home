@@ -195,7 +195,14 @@
   function addAIStamp(number, role = "user", save = true, createdAt = nowISO()) {
     const row = document.createElement("div"); row.className = role === "user" ? "line__right" : "line__left stamp-row";
     if (role !== "user") { const fig=document.createElement("figure"), im=document.createElement("img"); im.src="icon.png"; im.alt="うさきち"; fig.append(im); row.append(fig); }
-    const wrap=document.createElement("div"); wrap.className="stamp"; const img=document.createElement("img"); img.src=`stamp/${number}.png`; img.alt=`スタンプ ${number}`; img.loading="lazy"; wrap.append(img); row.append(wrap);
+    const wrap=document.createElement("div");
+wrap.className="stamp";
+const img=document.createElement("img");
+img.src=`https://masatann0628-sys.github.io/doi-home/stamp/${number}.png`;
+img.alt=`スタンプ ${number}`;
+img.loading="lazy";
+wrap.append(img);
+row.append(wrap);
     if (role === "user") { const date=document.createElement("span"); date.className="date"; date.textContent="送信 "+timeNow(createdAt); row.append(date); }
     aiMessages.append(row); scrollBottom(aiMessages);
     if (save) { history.push({role,stamp:number,created_at:createdAt}); persistLocal(); saveRemoteAI({role,content:`[スタンプ:${number}]`}); }
