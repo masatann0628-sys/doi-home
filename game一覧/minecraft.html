@@ -13632,8 +13632,8 @@
             setConnectButton(false);
             menuStatus(
               showError
-                ? "Supabaseが未設定です。URLとPublishable Keyを確認してください。"
-                : "Supabase接続設定を待機中…",
+                ? "databaseが未設定です。URLとPublishable Keyを確認してください。"
+                : "database接続設定を待機中…",
               false
             );
             return;
@@ -13964,7 +13964,7 @@
           makeDebugPanel();
 
           if (!configured()) {
-            showDebug("Supabase設定がありません", true);
+            showDebug("database設定がありません", true);
             started = false;
             return;
           }
@@ -13981,7 +13981,7 @@
               .slice(0, 16) || "Player";
           playerId = getPlayerId();
 
-          showDebug("Supabase接続中…  room=" + roomId);
+          showDebug("database接続中…  room=" + roomId);
 
           try {
             client = window.supabase.createClient(cfg.url, cfg.publishableKey, {
