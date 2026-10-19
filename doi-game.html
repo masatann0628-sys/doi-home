@@ -384,7 +384,7 @@ const MINI_GAMES = [
     image: "./nakolog.png",
     bigImage: true,
   },
- {
+{
     title: "しりとり Ai -koro",
     url: "./game一覧/game3.html",
     image: "./しりとり ai.png",
@@ -407,7 +407,7 @@ const MINI_GAMES = [
     // 画像を設定しなくても、ゲーム名入りのサムネイルを自動生成する。
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="320" height="204" viewBox="0 0 320 204"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#173c78"/><stop offset="1" stop-color="#4ca9df"/></linearGradient></defs><rect width="320" height="204" rx="12" fill="url(#bg)"/><circle cx="270" cy="45" r="24" fill="#ffdf70"/><path d="M0 165 L70 115 L120 145 L185 75 L235 125 L320 60 L320 204 L0 204Z" fill="#17345e" opacity=".72"/><text x="160" y="178" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="white">${escapeMiniGameText(game.title)}</text></svg>`;
     const image = document.createElement('img');
-    image.alt = game.title + ' のサムネイル';
+    image.alt = game.title + ' ';
     image.loading = 'lazy';
     image.src = game.image || 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
     link.appendChild(image);
@@ -452,8 +452,12 @@ const MINI_GAMES = [
  <p>★2026.10.05</a></p>
  <p>このURLを公開しました。</p><br>
 
+ <p>★2026.10.12 </p>
+ <p>nakologを公開しました</p><br>
+
  <p>★2026.10.12 <img src="data:image/gif;base64,R0lGODlhHAAJAJECADY2Nv+eCP///wAAACH5BAEAAAIALAAAAAAcAAkAAAIqFI6pq8YPVQhngokvRdbyTnlVSGoJlqElaH5a+ambtIFZ64nRvjg8LygAADs=" alt=NEW! width=28 height=9 title=NEW!><a href=https://neutralx0.net/room/level/></a></p>
- <p>nakologを公開しました</p>
+ <p>しりとり -Aiを公開しました</p>
+
 
  </div>
  <div class=ad>
