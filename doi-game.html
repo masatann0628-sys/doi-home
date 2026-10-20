@@ -38,35 +38,45 @@
   height: 40px;
   object-fit: contain;
 }
-.mini-game-card.big-image img {
-  height: 100px;
-  width: 50%;
-  object-fit: contain;
-  object-position: left center;
+/* ===== ミニゲームカード共通・修正版 ===== */
+.mini-game-card {
+  display: block;
+  clear: both; /* ほかのカードと重ならないように改行（独立）させる */
+  margin-bottom: 20px;
+  text-decoration: none;
 }
-.mini-game-card.big-image .mini-game-title {
-  position: absolute;
-  left: 100px;
-  bottom: 0;
+
+.mini-game-card.big-image {
+  position: relative;
+  display: block; /* フレックスボックスによる崩れを防ぐためblockにする */
   width: 100%;
-  box-sizing: border-box;
-  text-align: left;
-  padding: 1px;
-  z-index: 2;
 }
+
+.mini-game-card.big-image img {
+  display: block;
+  width: 50%; /* 必要に応じて幅を調整 (例: 100% または 50%) */
+  max-width: 100px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 5px; /* 画像とタイトルの間の余白 */
+}
+
+.mini-game-card.big-image .mini-game-title {
+  display: block;
+  position: static;
+  width: 100%;
+  text-align: left;
+  padding: 4px 0;
+  clear: both; /* タイトルが横に回り込むのを防ぎ、確実に下に改行させる */
+}
+
 .mini-game-card.big-image .mini-game-new {
   position: absolute;
-  top: -10px;
-  left: 100px;
-  right: auto;
+  top: 0;
+  left: 10px;
   z-index: 3;
 }
-.mini-game-card.big-image {
-  position: relative;
-}
-.mini-game-card.big-image {
-  position: relative;
-}
+
 </style><style>html,body,div,span,h2,p,ul,li,table,tr,td,strong,img,hr{margin:0;padding:0;border:0;outline:0;font-size:100%}ul{list-style-type:none}body{font-family:"Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;font-size:12px;color:#333;background-color:#CCC;background-image:url(data:image/gif;base64,R0lGODlhBgAGAIAAAKKiopycnCH/C05FVFNDQVBFMi4wAwEAAAAh+QQEAAAAACwAAAAABgAGAAACCkyAhqDZdthroAAAOw==);letter-spacing:0.6pt}a{margin:0;padding:0;font-size:100%}#container{margin:0}#header{margin:0;width:100%;min-width:1000px;height:40px;background-color:#999999;border-bottom:4px solid #777777}#logo{margin:0;float:left;height:40px}#header_menu{margin:0 auto;width:940px}#header_menu ul{width:840px;margin-left:100px}#header_menu p{font-size:12px;font-weight:bold;white-space:nowrap}#header_menu li{margin-right:25px;height:40px;float:left;line-height:40px;min-width:40px;max-width:200px}#header_menu li a{color:#333;text-decoration:none}#header_menu li a:hover{color:#333;text-decoration:underline}#footer{width:100%;min-width:1000px;background-color:#666666;border-top:4px solid #555555;font-size:13px;background-image:none;clear:both}#footer_main{margin:0 auto;width:900px;padding:20px;text-align:center;color:#FFFFFF}#footer_main p{margin-bottom:10px}#footer_main a{color:#FFFFFF;text-decoration:none}#page_top{position:fixed;bottom:10px;right:10px}#page_top a{background:#444;text-decoration:none;line-height:30px;font-size:16px;font-weight:bold;color:#fff;width:50px;padding:10px 0;text-align:center;display:block;border-radius:50px}#page_top a:hover{text-decoration:none;background:#222}</style>
 <style>#contents a{text-decoration:none;color:#008888}#contents a:hover{text-decoration:underline;color:#005555}hr{border-top:2px dashed #ccc}#contents{margin:0 auto;padding:0;width:950px;background-color:#FFF;display:flex;line-height:1.7em}#ll_main{float:left;width:600px;display:flex}#ll{float:left;width:30px;background-color:#888888;background-image:url(data:image/gif;base64,R0lGODlhBgAGAIAAANvb29LS0iwAAAAABgAGAAACCkyAhqDZdthroAAAOw==)}#main{float:right;width:520px;padding:30px 20px 20px 30px}#sub{float:right;width:320px;padding:30px 30px 20px 0px}#sns{width:100%;height:30px;overflow:hidden}#sns li{float:left;margin:6px;margin-left:0;line-height:0}.txt{margin:10px 0px}.info h2{margin:3px;font-size:13px;color:white;background:#888;box-shadow:0px 0px 0px 3px #888;border:2px dashed #bbb;padding:4px 6px}.list1 h2{margin:16px 3px;font-size:13px;color:white;background:#569FAB;box-shadow:0px 0px 0px 3px #569FAB;border:2px dashed #9DC9C1;padding:4px 6px}.list2 h2{margin:16px 3px;font-size:13px;color:white;background:#815b41;box-shadow:0px 0px 0px 3px #815b41;border:2px dashed #C9C19D;padding:4px 6px}.list3 h2{margin:16px 3px;font-size:13px;color:white;background:#569FAB;box-shadow:0px 0px 0px 3px #569FAB;border:2px dashed #9DC9C1;padding:4px 6px}.ad{margin:30px auto;width:300px}.ad_f{margin:50px auto 10px auto;width:520px}</style>
 <meta http-equiv=origin-trial content="AlK2UR5SkAlj8jjdEc9p3F3xuFYlF6LYjAML3EOqw1g26eCwWPjdmecULvBH5MVPoqKYrOfPhYVL71xAXI1IBQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv=origin-trial content="Amm8/NmvvQfhwCib6I7ZsmUxiSCfOxWxHayJwyU1r3gRIItzr7bNQid6O8ZYaE1GSQTa69WwhPC9flq/oYkRBwsAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv=origin-trial content=A9nrunKdU5m96PSN1XsSGr3qOP0lvPFUB2AiAylCDlN5DTl17uDFkpQuHj1AFtgWLxpLaiBZuhrtb2WOu7ofHwEAAACKeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9><meta http-equiv=origin-trial content=A93bovR+QVXNx2/38qDbmeYYf1wdte9EO37K9eMq3r+541qo0byhYU899BhPB7Cv9QqD7wIbR1B6OAc9kEfYCA4AAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9><meta http-equiv=origin-trial content=A1S5fojrAunSDrFbD8OfGmFHdRFZymSM/1ss3G+NEttCLfHkXvlcF6LGLH8Mo5PakLO1sCASXU1/gQf6XGuTBgwAAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9><meta http-equiv=origin-trial content=AxjhRadLCARYRJawRjMjq4U8V8okQvSnrBIJWdMajuEkN3/DfVAcLcFhMVrUWnOXagwlI8dQD84FwJDGj9ohqAYAAABveyJvcmlnaW4iOiJodHRwczovL2dvb2dsZWFkc2VydmljZXMuY29tOjQ0MyIsImZlYXR1cmUiOiJGZXRjaExhdGVyQVBJIiwiZXhwaXJ5IjoxNzI1NDA3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9><meta name=referrer content=no-referrer><link type=image/x-icon rel="shortcut icon" href=data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAwAAAAAAAAAAAAAAAEAAAAAAAAADX/P8AcqrNADRsmAC4+f8Aic35AFG09wDt7e0AAGusAKzc+wC/v78AAAAAAP///wAAmPQAAAAAAAAAAAAAAAAAqqrdrd3dqqqqrZ3dzc3dqqqtnc3Mzczaqq2cfADMfaqqrZ3XEcfd2qqtnERERMzNqtncqIiozM2q2dyoiKjMzarZ3FiIhcwtrdnczMzMzNrZmZnFVVzM2tnZ2cx3zMza2dnZ3Mx8zNrW1tbdzDfMPdbW1trTPdM9ra2tqq3ardryD///4AP//+AB///gA///4AH//+AA///AAP//wAD//8AA//+AAf//AAH//wAB//8AAf//AAD//wEA//+rmf//><link rel=canonical href=https://neutralx0.net/><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:; form-action 'none'; base-uri 'none';">
@@ -374,22 +384,29 @@ body {
    title = カードに表示する名前 / url = ゲームのURL / isNew = NEW!バッジを付けるか */
 const MINI_GAMES = [
   {
-    title: "MINECRAFT-koro",
+    title: "MINECRAFT",
     url: "./game一覧/game1.html",
     image: "./minecraft.png",
   },
  {
-    title: "nakolog-koro",
+    title: "nakolog",
     url: "./game一覧/game2.html",
     image: "./nakolog.png",
     bigImage: true,
   },
 {
-    title: "しりとり Ai -koro",
+    title: "しりとり Ai",
     url: "./game一覧/game3.html",
     image: "./しりとり ai.png",
     isNew: true,
+  },
+{
+    title: "Ai",
+    url: "./game一覧/game4.html",
+    image: "./ai.png",
+    isNew: true,
   }
+
 ];
 (function renderMiniGames() {
   const list = document.getElementById('mini-game-list');
@@ -455,8 +472,12 @@ const MINI_GAMES = [
  <p>★2026.10.12 </p>
  <p>nakologを公開しました</p><br>
 
- <p>★2026.10.12 <img src="data:image/gif;base64,R0lGODlhHAAJAJECADY2Nv+eCP///wAAACH5BAEAAAIALAAAAAAcAAkAAAIqFI6pq8YPVQhngokvRdbyTnlVSGoJlqElaH5a+ambtIFZ64nRvjg8LygAADs=" alt=NEW! width=28 height=9 title=NEW!><a href=https://neutralx0.net/room/level/></a></p>
- <p>しりとり -Aiを公開しました</p>
+ <p>★2026.10.19 <img src="data:image/gif;base64,R0lGODlhHAAJAJECADY2Nv+eCP///wAAACH5BAEAAAIALAAAAAAcAAkAAAIqFI6pq8YPVQhngokvRdbyTnlVSGoJlqElaH5a+ambtIFZ64nRvjg8LygAADs=" alt=NEW! width=28 height=9 title=NEW!><a href=https://neutralx0.net/room/level/></a></p>
+ <p>しりとり -Aiを公開しました</p><br>
+
+<p>★2026.10.20 <img src="data:image/gif;base64,R0lGODlhHAAJAJECADY2Nv+eCP///wAAACH5BAEAAAIALAAAAAAcAAkAAAIqFI6pq8YPVQhngokvRdbyTnlVSGoJlqElaH5a+ambtIFZ64nRvjg8LygAADs=" alt=NEW! width=28 height=9 title=NEW!><a href=https://neutralx0.net/room/level/></a></p>
+ <p>Aiを公開しました</p>
+
 
 
  </div>
